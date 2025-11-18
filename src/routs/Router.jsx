@@ -2,6 +2,9 @@ import { createBrowserRouter } from "react-router";
 import RootLayout from "../Layouts/RootLayout/RootLayout";
 import Home from "../Pages/Home/Home/Home";
 import Map from "../Pages/Map/Map";
+import AuthLayout from "../Layouts/AuthLayout/AuthLayout";
+import Register from "../Pages/Auth/Register/Register";
+import Login from "../Pages/Auth/Login/Login";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +19,20 @@ const router = createBrowserRouter([
         path: "/coverage",
         Component: Map,
         loader: () => fetch("/serviceCenters.json"),
+      },
+    ],
+  },
+  {
+    path: "/",
+    Component: AuthLayout,
+    children: [
+      {
+        path: "/register",
+        Component: Register,
+      },
+      {
+        path: "/login",
+        Component: Login,
       },
     ],
   },
