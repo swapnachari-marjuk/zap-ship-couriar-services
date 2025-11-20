@@ -32,7 +32,7 @@ const Login = () => {
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <form onSubmit={handleSubmit(handleLogin)} className="card-body">
           <fieldset className="fieldset">
-            <label className="label">Email</label>
+            <label className="label font-bold">Email</label>
             <input
               type="email"
               {...register("email", { required: true })}
@@ -47,7 +47,7 @@ const Login = () => {
             )}
 
             <div>
-              <label className="label">Password</label>
+              <label className="label font-bold">Password</label>
               <input
                 type={showPass ? "text" : "password"}
                 {...register("password", {
@@ -80,12 +80,18 @@ const Login = () => {
                 ⚠ Enter a valid Password.
               </p>
             )}
-            <button className="btn btn-neutral mt-4">Login</button>
+
+            <div>
+              <a className="link link-hover">Forgot password?</a>
+            </div>
+
+            <button className="btn btn-primary mt-2">Login</button>
           </fieldset>
         </form>
-        <div className="divider mx-5">OR</div>
+
+        <div className="divider mx-3">OR</div>
         <GoogleLogin />
-        <p className="text-center mb-3">
+        <p className="text-center mb-4">
           New to website?{" "}
           <Link className="underline" to={"/register"}>
             Register

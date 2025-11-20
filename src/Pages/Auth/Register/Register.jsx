@@ -56,7 +56,7 @@ const Register = () => {
         <form onSubmit={handleSubmit(handleRegister)} className="card-body">
           <fieldset className="fieldset">
             {/* NAME */}
-            <label className="label">Name</label>
+            <label className="label font-bold">Name</label>
             <input
               type="text"
               {...register("name", { required: true })}
@@ -71,7 +71,7 @@ const Register = () => {
             )}
 
             {/* photo */}
-            <label className="label">Photo</label>
+            <label className="label font-bold">Photo</label>
             <input
               type="file"
               {...register("profilePic")}
@@ -80,7 +80,7 @@ const Register = () => {
             />
 
             {/* email */}
-            <label className="label">Email</label>
+            <label className="label font-bold">Email</label>
             <input
               type="email"
               {...register("email", { required: true })}
@@ -96,7 +96,7 @@ const Register = () => {
 
             {/* password */}
             <div>
-              <label className="label">Password</label>
+              <label className="label font-bold">Password</label>
               <input
                 type={showPass ? "text" : "password"}
                 {...register("password", {
@@ -125,7 +125,7 @@ const Register = () => {
               </p>
             )}
 
-            <button className="btn btn-neutral mt-4">Register</button>
+            <button className="btn btn-primary mt-4">Register</button>
           </fieldset>
         </form>
 
@@ -133,7 +133,7 @@ const Register = () => {
         <GoogleLogin />
 
         <p className="text-center mb-3">
-          New to website?{" "}
+          Have an account?{" "}
           <Link className="underline" to={"/login"}>
             Login
           </Link>
