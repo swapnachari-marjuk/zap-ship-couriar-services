@@ -1,12 +1,19 @@
 import React from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { useLoaderData } from "react-router";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useAuth } from "../../hooks/useAuth";
 
 const SendParcel = () => {
   const { register, handleSubmit, control } = useForm();
+  const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
+
   const serviceCenters = useLoaderData();
   const regionsDuplicate = serviceCenters.map((c) => c.region);
   const regions = [...new Set(regionsDuplicate)];
+
   const senderRegion = useWatch({ control, name: "senderRegion" });
   const receiverRegion = useWatch({ control, name: "receiverRegion" });
 
@@ -17,8 +24,55 @@ const SendParcel = () => {
   };
 
   const onSubmit = (data) => {
+    const isDocument = data.parcelType === "document";
+    const isSameDistrict = data.senderDistrict === data.receiverDistrict;
+    const parcelWeight = parseFloat(data?.parcelWeight);
+
+    let cost = 0;
+
+    if (isDocument) {
+      cost = isSameDistrict ? 60 : 80;
+    } else {
+      if (parcelWeight < 3) {
+        cost = isSameDistrict ? 110 : 150;
+      } else {
+        const mainCost = isSameDistrict ? 110 : 150;
+
+        const extraWeight = parcelWeight - 3;
+        const extraCost = isSameDistrict
+          ? extraWeight * 40
+          : extraWeight * 40 + 40;
+
+        cost = mainCost + extraCost;
+      }
+    }
+
+    Swal.fire({
+      title: `You will be charged ${cost} taka.`,
+      text: "Are you wanted to send parcel with this cost?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#caeb66",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, I agree!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure
+          .post("/parcels", data)
+          .then((res) => console.log("after saving data", res))
+          .catch((err) => console.log(err));
+        // Swal.fire({
+        //   title: "Deleted!",
+        //   text: "Your file has been deleted.",
+        //   icon: "success",
+        // });
+      }
+    });
+
+    console.log("Cost is", cost, "tk");
     console.log(data);
   };
+
   return (
     <div className="bg-white rounded-2xl m-10 md:px-20 px-10 md:py-16 py-8">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
@@ -52,7 +106,7 @@ const SendParcel = () => {
           </label>
         </div>
 
-        <div className="flex flex-col lg:gap-10 gap-5">
+        <div className="flex lg:flex-row flex-col lg:gap-10 gap-5">
           {/* Parcel Name */}
           <div className="flex-1">
             <label>Parcel Name</label>
@@ -84,15 +138,18 @@ const SendParcel = () => {
               <input
                 {...register("senderName")}
                 className="w-full border p-2 rounded"
+                defaultValue={user.displayName}
               />
             </div>
 
             {/* sender address */}
             <div>
-              <label>Address</label>
+              <label>Email</label>
               <input
-                {...register("senderAddress")}
+                type="email"
+                {...register("senderEmail")}
                 className="w-full border p-2 rounded"
+                defaultValue={user.email}
               />
             </div>
 
@@ -164,10 +221,11 @@ const SendParcel = () => {
 
             {/* receiver address */}
             <div>
-              <label>Receiver Address</label>
+              <label>Receiver Email</label>
               <input
-                {...register("receiverAddress")}
+                {...register("receiverEmail")}
                 className="w-full border p-2 rounded"
+                type="email"
               />
             </div>
 
@@ -231,7 +289,7 @@ const SendParcel = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="bg-lime-400 px-6 py-2 rounded text-black font-medium"
+          className="btn btn-primary px-6 py-2 rounded text-black font-medium"
         >
           Proceed to Confirm Booking
         </button>
