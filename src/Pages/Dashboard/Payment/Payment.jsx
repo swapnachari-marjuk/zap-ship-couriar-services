@@ -23,15 +23,15 @@ const Payment = () => {
     };
     console.log(paymentInfo);
     const res = await axiosSecure.post("/create-checkout-session", paymentInfo);
-    window.location.href = res.data
+    window.location.href = res.data;
     console.log(res.data);
   };
   return (
-    <div>
-      <p>
+    <div className=" flex justify-center items-center flex-col bg-white max-w-sm mx-auto mt-20 py-5 rounded-2xl ">
+      <h3 className="font-bold">
         Please, Pay {parcel?.courierCost} tk for {parcel?.parcelName}
-      </p>
-      <button onClick={handlePayment} className="btn btn-primary">
+      </h3>
+      <button onClick={handlePayment} className="btn btn-primary w-[50%] mt-2">
         pay
       </button>
     </div>

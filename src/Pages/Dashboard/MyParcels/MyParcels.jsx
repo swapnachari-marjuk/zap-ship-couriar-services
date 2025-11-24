@@ -47,10 +47,8 @@ const MyParcels = () => {
     console.log(id);
   };
 
-
   return (
     <div>
-      here is my parcels data {parcels.length}
       <div className="overflow-x-auto">
         <table className="table table-zebra">
           {/* head */}
@@ -72,10 +70,9 @@ const MyParcels = () => {
                 <td>{parcel.courierCost} tk</td>
                 <td>{parcel?.deliveryStatus}</td>
                 <td>
-                  {parcel?.paymentStatus === "Paid" ? (
-                    <span className="text-lime-600 bg-lime-300">Paid</span>
+                  {parcel?.paymentStatus === "paid" ? (
+                    <span className="text-lime-600 bg-lime-300 badge">Paid</span>
                   ) : (
-
                     <Link
                       to={`/dashboard/payment/${parcel._id}`}
                       className="btn btn-xs"
@@ -84,7 +81,6 @@ const MyParcels = () => {
                     </Link>
                   )}
                 </td>
-                <td>Blue</td>
                 <td>
                   <button className="btn btn-xs">
                     <SquareArrowOutUpRight size={16} strokeWidth={1.75} />

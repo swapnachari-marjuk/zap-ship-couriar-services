@@ -4,8 +4,8 @@ import img2 from "../../../assets/safe-delivery.png";
 
 const ECards = () => {
   return (
-    <div className="space-y-3 lg:mx-20 md:mx-10 py-10 my-20 border-y-2 border-dashed border-gray-300">
-      <div className="flex flex-col md:flex-row gap-5 items-center md:m-auto m-4 bg-white rounded-2xl p-5">
+    <div className="space-y-6  lg:mx-20 md:mx-10 py-10 my-20 border-y-2 border-dashed border-gray-300">
+      <div className="flex flex-col md:flex-row gap-5 items-center bg-white rounded-2xl p-5">
         <img className="w-45" src={img1} alt="" />
         <div className="w-1 h-45 border-r-2 border-dashed border-gray-300 hidden md:block"></div>
         <div className="w-full h-px border-b-2 border-dashed border-gray-300 md:hidden"></div>
@@ -19,7 +19,7 @@ const ECards = () => {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-5 items-center md:m-auto m-4 bg-white rounded-2xl p-5">
+      <div className="flex flex-col md:flex-row gap-5 items-center bg-white rounded-2xl p-5">
         <img className="w-45" src={img2} alt="" />
         <div className="w-1 h-45 border-r-2 border-dashed border-gray-300 hidden md:block"></div>
         <div className="w-full h-px border-b-2 border-dashed border-gray-300 md:hidden"></div>
@@ -33,7 +33,7 @@ const ECards = () => {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-5 items-center md:m-auto m-4 bg-white rounded-2xl p-5">
+      <div className="flex flex-col md:flex-row gap-5 items-center bg-white rounded-2xl p-5">
         <img className="w-45" src={img2} alt="" />
         <div className="w-1 h-45 border-r-2 border-dashed border-gray-300 hidden md:block"></div>
         <div className="w-full h-px border-b-2 border-dashed border-gray-300 md:hidden"></div>
