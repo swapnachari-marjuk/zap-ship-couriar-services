@@ -2,7 +2,7 @@ import { Eye, EyeOff } from "lucide-react";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../../hooks/useAuth";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import GoogleLogin from "../SocialLogin/GoogleLogin";
 import axios from "axios";
 
@@ -12,6 +12,7 @@ const Register = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
 
   const { registerUser, updateUserProfile } = useAuth();
 
@@ -32,19 +33,31 @@ const Register = () => {
         }`;
 
         axios.post(image_api_url, formData).then((res) => {
-          console.log("after image upload", res.data.data.url);
+          const photoURL = res.data.data.url;
+
+          const userInfo = {
+            email: data.email,
+            displayName: data.name,
+            photoURL: photoURL,
+          };
+
+          axios.post("http://localhost:3000/users", userInfo).then((res) => {
+            if (res.data.insertedId) {
+              console.log("User info saved in DB successfully.");
+            }
+          });
 
           // update user profile to firebase
           const userProfile = {
             displayName: data.name,
-            photoURL: res.data.data.url,
+            photoURL: photoURL,
           };
 
           updateUserProfile(userProfile)
             .then(() => console.log("user profile updated"))
             .catch((error) => console.log(error));
         });
-
+        navigate('/')
         console.log("after create a user successfully", result);
       })
       .catch((err) => console.log(err));
