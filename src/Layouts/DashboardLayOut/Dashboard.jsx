@@ -1,4 +1,8 @@
-import { Bike, CreditCard, Truck } from "lucide-react";
+import { FaTruckFast } from "react-icons/fa6";
+import { BsCreditCard2BackFill } from "react-icons/bs";
+import { RiMotorbikeFill } from "react-icons/ri";
+import { FaUserClock } from "react-icons/fa";
+import { AiFillHome } from "react-icons/ai";
 import React from "react";
 import { Link, Outlet } from "react-router";
 
@@ -31,6 +35,7 @@ const Dashboard = () => {
                 <path d="M14 10l2 2l-2 2"></path>
               </svg>
             </label>
+
             <Link to={"/dashboard"} className="px-4 font-bold text-xl">
               {" "}
               <span className="bg-lime-300 p-2 rounded-2xl">ZapShift</span>{" "}
@@ -53,27 +58,14 @@ const Dashboard = () => {
             <ul className="menu w-full grow">
               {/* List item */}
               <li>
-                <Link to={"/"}>
-                  <button
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                    data-tip="Homepage"
-                  >
-                    {/* Home icon */}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      strokeLinejoin="round"
-                      strokeLinecap="round"
-                      strokeWidth="2"
-                      fill="none"
-                      stroke="currentColor"
-                      className="my-1.5 inline-block size-4"
-                    >
-                      <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
-                      <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                    </svg>
-                    <span className="is-drawer-close:hidden">Homepage</span>
-                  </button>
+                <Link
+                  to={"/"}
+                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                  data-tip="Homepage"
+                >
+                  {/* Home icon */}
+                  <AiFillHome />
+                  <span className="is-drawer-close:hidden">Homepage</span>
                 </Link>
               </li>
 
@@ -84,7 +76,7 @@ const Dashboard = () => {
                   data-tip="myParcels"
                   to={"/dashboard/myParcels"}
                 >
-                  <Truck strokeWidth={1.25} />
+                  <FaTruckFast />
                   <span className="is-drawer-close:hidden"> My Parcels</span>
                 </Link>
               </li>
@@ -96,7 +88,7 @@ const Dashboard = () => {
                   data-tip="My Payment"
                   to={"/dashboard/myPayment"}
                 >
-                  <CreditCard strokeWidth={1.25} />
+                  <BsCreditCard2BackFill />
                   <span className="is-drawer-close:hidden">My Payment</span>
                 </Link>
               </li>
@@ -108,8 +100,20 @@ const Dashboard = () => {
                   data-tip="Pending Rider"
                   to={"/dashboard/pendingRider"}
                 >
-                  <Bike strokeWidth={1.25} />
+                  <RiMotorbikeFill />
                   <span className="is-drawer-close:hidden">Pending Rider</span>
+                </Link>
+              </li>
+
+              {/* pending rider */}
+              <li>
+                <Link
+                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                  data-tip="Manage Users"
+                  to={"/dashboard/manageUsers"}
+                >
+                  <FaUserClock />
+                  <span className="is-drawer-close:hidden">Manage Users</span>
                 </Link>
               </li>
 
