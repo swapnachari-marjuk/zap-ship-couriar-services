@@ -13,7 +13,7 @@ const useRole = () => {
       return res.data;
     },
   });
-  console.log();
+  // console.log(userRole);
   return { isLoading, userRole };
 };
 

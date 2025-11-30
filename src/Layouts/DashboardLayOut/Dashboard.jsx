@@ -9,7 +9,7 @@ import useRole from "../../hooks/useRole";
 
 const Dashboard = () => {
   const { userRole } = useRole();
-  console.log(userRole);
+  // console.log(userRole);
   return (
     <div className="max-w-7xl mx-auto">
       <div className="drawer lg:drawer-open">
