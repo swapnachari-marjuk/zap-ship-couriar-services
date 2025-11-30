@@ -16,6 +16,7 @@ import SuccessPayment from "../Pages/Dashboard/SuccessPayment/SuccessPayment";
 import MyPayment from "../Pages/Dashboard/MyPayment/MyPayment";
 import PendingRider from "../Pages/Dashboard/PendingRider/PendingRider";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
+import AdminRouter from "./AdminRouter";
 
 const router = createBrowserRouter([
   {
@@ -81,11 +82,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/pendingRider",
-        Component: PendingRider,
+        element: (
+          <AdminRouter>
+            <PendingRider></PendingRider>
+          </AdminRouter>
+        ),
       },
       {
         path: "/dashboard/manageUsers",
-        Component: ManageUsers,
+        element: (
+          <AdminRouter>
+            <ManageUsers></ManageUsers>
+          </AdminRouter>
+        ),
       },
     ],
   },
