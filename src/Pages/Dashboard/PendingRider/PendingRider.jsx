@@ -51,7 +51,8 @@ const PendingRider = () => {
               <th>Name</th>
               <th>Contact</th>
               <th>Region</th>
-              <th>Status</th>
+              <th>Application Status</th>
+              <th>Work Status</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -64,6 +65,7 @@ const PendingRider = () => {
                 <th>{p.riderPhoneNumber}</th>
                 <th>{p.riderRegion}</th>
                 <th>{p.status}</th>
+                <th>{p.workStatus}</th>
                 <th>
                   <button
                     className="btn btn-sm"

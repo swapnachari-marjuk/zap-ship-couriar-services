@@ -6,7 +6,7 @@ import { Navigate } from "react-router";
 const AdminRouter = ({ children }) => {
   const { loading } = useAuth();
   const { userRole, isLoading } = useRole();
-  console.log(userRole);
+  // console.log(userRole);
   if (loading || isLoading) {
     return <p>loading...</p>;
   }
