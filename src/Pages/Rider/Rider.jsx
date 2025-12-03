@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm, useWatch } from "react-hook-form";
 import riderImg from "../../assets/agent-pending.png";
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useAuth } from "../../hooks/useAuth";
 import Swal from "sweetalert2";
@@ -13,6 +13,7 @@ const Rider = () => {
     control,
     // formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
 
@@ -32,6 +33,7 @@ const Rider = () => {
     console.log(data);
     axiosSecure.post("/riders", data).then((res) => {
       if (res.data.insertedId) {
+        navigate("/");
         Swal.fire({
           title: "Success!",
           text: "Your request has been send.",

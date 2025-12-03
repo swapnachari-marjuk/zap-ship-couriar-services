@@ -1,8 +1,9 @@
 import { FaTruckFast } from "react-icons/fa6";
 import { BsCreditCard2BackFill } from "react-icons/bs";
 import { RiEBike2Line, RiMotorbikeFill } from "react-icons/ri";
-import { FaUserClock } from "react-icons/fa";
+import { FaTasks, FaUserClock } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
+import { GoTasklist } from "react-icons/go";
 import React from "react";
 import { Link, Outlet } from "react-router";
 import useRole from "../../hooks/useRole";
@@ -96,6 +97,37 @@ const Dashboard = () => {
                 </Link>
               </li>
 
+              {/* riders only */}
+
+              {userRole?.role === "rider" && (
+                <>
+                  <li>
+                    <Link
+                      className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                      data-tip="Assigned Deliveries"
+                      to={"/dashboard/assignedDeliveries"}
+                    >
+                      <GoTasklist size={18} />
+
+                      <span className="is-drawer-close:hidden">
+                        Assigned Deliveries
+                      </span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                      data-tip="Completed Deliveries"
+                      to={"/dashboard/completedDeliveries"}
+                    >
+                      <FaTasks />
+                      <span className="is-drawer-close:hidden"></span>
+                    </Link>
+                  </li>
+                </>
+              )}
+
+              {/* admin only links */}
               {userRole?.role === "admin" && (
                 <>
                   {/* pending rider */}

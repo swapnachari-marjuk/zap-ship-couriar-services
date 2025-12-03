@@ -18,6 +18,9 @@ import PendingRider from "../Pages/Dashboard/PendingRider/PendingRider";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import AdminRouter from "./AdminRouter";
 import AssignRider from "../Pages/Dashboard/AssignRider/AssignRider";
+import AssignedDeliveries from "../Pages/Dashboard/AssignedDeliveries/AssignedDeliveries";
+import RiderRouter from "./RiderRouter";
+import CompletedDeliveries from "../Pages/Dashboard/CompletedDeliveries/CompletedDeliveries";
 
 const router = createBrowserRouter([
   {
@@ -81,6 +84,26 @@ const router = createBrowserRouter([
         path: "/dashboard/paymentCancel",
         Component: CancelPayment,
       },
+
+      // riders only router
+      {
+        path: "/dashboard/assignedDeliveries",
+        element: (
+          <RiderRouter>
+            <AssignedDeliveries></AssignedDeliveries>
+          </RiderRouter>
+        ),
+      },
+      {
+        path: "/dashboard/completedDeliveries",
+        element: (
+          <RiderRouter>
+            <CompletedDeliveries />
+          </RiderRouter>
+        ),
+      },
+
+      // admin only router
       {
         path: "/dashboard/pendingRider",
         element: (

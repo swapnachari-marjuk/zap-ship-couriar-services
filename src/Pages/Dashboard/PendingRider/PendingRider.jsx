@@ -19,7 +19,6 @@ const PendingRider = () => {
       .patch(`/riders/${rider._id}`, updateInfo)
       .then(() => {
         Swal.fire({
-          position: "top-end",
           icon: "success",
           title: `Rider request has been ${status}.`,
           showConfirmButton: false,

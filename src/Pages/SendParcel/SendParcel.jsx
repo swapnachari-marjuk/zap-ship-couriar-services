@@ -65,7 +65,6 @@ const SendParcel = () => {
           .then((res) => console.log("after saving data", res))
           .catch((err) => console.log(err));
         Swal.fire({
-          position: "top-end",
           icon: "success",
           title: "Your Parcel Request accepted. Pay for confirmation",
           showConfirmButton: false,

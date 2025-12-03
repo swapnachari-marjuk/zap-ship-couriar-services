@@ -46,7 +46,6 @@ const AssignRider = () => {
         parcelsRefetch();
         modalRef.current.close();
         Swal.fire({
-          position: "top-end",
           icon: "success",
           title: `Rider assigned for this parcel.`,
           showConfirmButton: false,
@@ -58,7 +57,6 @@ const AssignRider = () => {
   };
   return (
     <div>
-      <p>Assign Rider: {parcels.length}</p>
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}

@@ -40,7 +40,6 @@ const ManageUsers = () => {
         refetch();
         if (res.data.approvalStatus === "approved") {
           Swal.fire({
-            position: "top-end",
             icon: "success",
             title: `${user.displayName} has been saved as an admin.`,
             showConfirmButton: false,
@@ -50,7 +49,6 @@ const ManageUsers = () => {
 
         if (res.data.approvalStatus === "removed") {
           Swal.fire({
-            position: "top-end",
             icon: "success",
             title: `${user.displayName} has been removed from admin.`,
             showConfirmButton: false,
