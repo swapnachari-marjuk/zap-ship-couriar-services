@@ -15,16 +15,16 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <NavLink>Services</NavLink>
-      </li>
-      <li>
-        <NavLink to={"/coverage"}>Coverage</NavLink>
+        <NavLink to={"/sendParcel"}>Send A Parcel</NavLink>
       </li>
       <li>
         <NavLink to={"/dashboard"}>Dashboard</NavLink>
       </li>
       <li>
-        <NavLink to={"/sendParcel"}>Send A Parcel</NavLink>
+        <NavLink to={"/coverage"}>Coverage</NavLink>
+      </li>
+      <li>
+        <NavLink>Services</NavLink>
       </li>
       <li>
         <NavLink>About Us</NavLink>

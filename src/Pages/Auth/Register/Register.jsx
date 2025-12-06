@@ -127,7 +127,7 @@ const Register = () => {
                   e.preventDefault();
                   setShowPass(!showPass);
                 }}
-                className="btn-xs relative top-1 right-6 "
+                className="btn-xs relative md:-left-7 md:-bottom-1 -right-[88%] bottom-[35%]"
               >
                 {showPass ? <EyeOff size={16} /> : <Eye size={16} />}
               </button>

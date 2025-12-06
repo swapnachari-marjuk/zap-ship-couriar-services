@@ -4,6 +4,7 @@ import { RiEBike2Line, RiMotorbikeFill } from "react-icons/ri";
 import { FaTasks, FaUserClock } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
 import { GoTasklist } from "react-icons/go";
+import logoImg from "../../assets/logo.png";
 import React from "react";
 import { Link, Outlet } from "react-router";
 import useRole from "../../hooks/useRole";
@@ -68,8 +69,19 @@ const Dashboard = () => {
                   data-tip="Homepage"
                 >
                   {/* Home icon */}
-                  <AiFillHome />
+                  <img className="max-w-5" src={logoImg} alt="" />
                   <span className="is-drawer-close:hidden">Homepage</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={"/dashboard"}
+                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                  data-tip="Dashboard Home"
+                >
+                  {/* Home icon */}
+                  <AiFillHome />
+                  <span className="is-drawer-close:hidden">Dashboard Home</span>
                 </Link>
               </li>
 
